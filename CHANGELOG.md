@@ -29,6 +29,7 @@ Docs: https://docs.openclaw.ai
 
 ### Fixes
 
+- Agents/network: allow trusted web-search providers and configured model-provider hosts to work behind Surge/Clash/sing-box fake-IP DNS by accepting RFC 2544 and IPv6 ULA synthetic answers only for the request's scoped hostname, without broad private-network access. Refs #76530 and #76549. Thanks @zqchris.
 - Feishu: accept and honor `channels.feishu.blockStreaming` at the top level and per account, while keeping the legacy default off so Feishu cards no longer reject documented config or silently drop block replies. Fixes #75555. Thanks @vincentkoc.
 - Google Chat: normalize custom Google auth transport headers before google-auth/gaxios interceptors run, restoring webhook token verification when certificate retrieval expects Fetch `Headers`. Fixes #76742. Thanks @donbowman.
 - Doctor/plugins: reset stale `plugins.slots.memory` and `plugins.slots.contextEngine` references during `doctor --fix`, so cleanup of missing plugin config does not leave unrecoverable slot owners behind. Fixes #76550 and #76551. Thanks @vincentkoc.
